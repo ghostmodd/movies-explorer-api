@@ -5,8 +5,9 @@ const IncorrectInputError = require('../errors/IncorrectInputError');
 const ConflictError = require('../errors/ConflictError');
 
 function getMovies(req, res, next) {
-  Movie.find({})
-    .populate('owner')
+  const userId = req.user._id;
+
+  Movie.find({ owner: userId })
     .then((result) => {
       res.send(result);
     })
