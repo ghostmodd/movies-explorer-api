@@ -3,7 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { requestsLogger, errorsLogger } = require('./middlewares/logger');
 const mainRouter = require('./routes/mainRouter');
@@ -17,11 +16,6 @@ const allowedCors = [
 ];
 const allowedMethods = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
-app.use(
-  helmet({
-    crossOriginOpenerPolicy: false,
-  }),
-);
 app.use(
   rateLimit({
     windowMs: 15 * 60 * 1000,
