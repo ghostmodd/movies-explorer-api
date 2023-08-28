@@ -12,6 +12,10 @@ const errorHandler = require('./middlewares/errorHandler');
 const app = express();
 const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 mongoose.connect(DB_URL);
+const allowedCors = [
+  'http://localhost:3000',
+];
+const allowedMethods = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
 app.use(
   helmet({
@@ -28,6 +32,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(requestsLogger);
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  const { method } = req;
+  const requestHeaders = req.headers['access-control-request-headers'];
+
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', allowedMethods);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+    return res.end();
+  }
+
+  return next();
+});
 app.use(mainRouter);
 app.use(errorsLogger);
 app.use(errors());
