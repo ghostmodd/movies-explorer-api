@@ -12,7 +12,8 @@ const app = express();
 const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 mongoose.connect(DB_URL);
 const allowedCors = [
-  'http://localhost:3000',
+  'http://ghostmodd.nomoredomainsicu.ru',
+  'https://ghostmodd.nomoredomainsicu.ru'
 ];
 const allowedMethods = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
