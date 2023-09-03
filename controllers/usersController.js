@@ -91,7 +91,7 @@ function login(req, res, next) {
         token,
         {
           maxAge: 60480000,
-          httpOnly: false,
+          httpOnly: true,
           sameSite: "none",
           secure: true,
         },
