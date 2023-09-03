@@ -106,7 +106,16 @@ function login(req, res, next) {
 
 function logout(req, res, next) {
   try {
-    res.clearCookie('token');
+    res.cookie(
+      'token',
+      "",
+      {
+        maxAge: 60480000,
+        sameSite: "none",
+        secure: true,
+        httpOnly: true,
+      },
+    );
     res.send({ message: 'OK' });
   } catch (err) {
     next(new DefaultError('На сервере произошла ошибка'));
