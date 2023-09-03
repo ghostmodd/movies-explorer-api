@@ -109,7 +109,7 @@ function logout(req, res, next) {
       path: "/",
       httpOnly: true,
       sameSite: "none",
-      domain: "api.ghostmodd.nomoreparties.co",
+      domain: "http://ghostmodd.nomoredomainsicu.ru/",
     });
     res.send({ message: 'OK' });
   } catch (err) {
