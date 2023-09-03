@@ -93,6 +93,7 @@ function login(req, res, next) {
           maxAge: 60480000,
           sameSite: "none",
           secure: true,
+          httpOnly: true,
         },
       );
 
@@ -109,7 +110,7 @@ function logout(req, res, next) {
       path: "/",
       httpOnly: true,
       sameSite: "none",
-      domain: "http://ghostmodd.nomoredomainsicu.ru/",
+      domain: "api.ghostmodd.nomoreparties.co",
     });
     res.send({ message: 'OK' });
   } catch (err) {
