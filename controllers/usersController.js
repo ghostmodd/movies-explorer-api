@@ -106,12 +106,7 @@ function login(req, res, next) {
 
 function logout(req, res, next) {
   try {
-    res.clearCookie('token', {
-      path: "/",
-      httpOnly: true,
-      sameSite: "none",
-      domain: "api.ghostmodd.nomoreparties.co",
-    });
+    res.clearCookie('token');
     res.send({ message: 'OK' });
   } catch (err) {
     next(new DefaultError('На сервере произошла ошибка'));
