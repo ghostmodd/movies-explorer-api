@@ -91,7 +91,6 @@ function login(req, res, next) {
         token,
         {
           maxAge: 60480000,
-          httpOnly: true,
           sameSite: "none",
           secure: true,
         },
@@ -106,7 +105,12 @@ function login(req, res, next) {
 
 function logout(req, res, next) {
   try {
-    res.clearCookie('token');
+    res.clearCookie('token', {
+      path: "/",
+      httpOnly: true,
+      sameSite: "none",
+      domain: "api.ghostmodd.nomoreparties.co",
+    });
     res.send({ message: 'OK' });
   } catch (err) {
     next(new DefaultError('На сервере произошла ошибка'));
