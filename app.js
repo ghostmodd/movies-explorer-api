@@ -14,7 +14,8 @@ mongoose.connect(DB_URL);
 const allowedCors = [
   'http://ghostmodd.nomoredomainsicu.ru',
   'https://ghostmodd.nomoredomainsicu.ru',
-  'http://localhost:3000'
+  'http://ghostmodd.ru',
+  'https://ghostmodd.ru',
 ];
 const allowedMethods = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
