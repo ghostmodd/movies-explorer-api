@@ -16,8 +16,10 @@ const allowedCors = [
   'https://ghostmodd.nomoredomainsicu.ru',
   'http://ghostmodd.ru',
   'https://ghostmodd.ru',
-  "https://ghostmodd.github.io/",
-  "https://ghostmodd.github.io/hse-3d-navigation/",
+  "https://ghostmodd.github.io",
+  "http://ghostmodd.github.io",
+  "https://ghostmodd.github.io/hse-3d-navigation",
+  "http://ghostmodd.github.io/hse-3d-navigation".
 ];
 const allowedMethods = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
